@@ -1,8 +1,12 @@
+import Banner from "../components/Banner";
+import Brands from "../components/Brands";
+
 const home = () => {
     return (
-        <div>
-            <h1>HELLO WORLD</h1>
-        </div>
+        <>
+            <Banner></Banner>
+            <Brands></Brands>
+        </>
     );
 };
 
