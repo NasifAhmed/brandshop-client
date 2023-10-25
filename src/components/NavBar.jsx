@@ -1,6 +1,13 @@
 import { NavLink, Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
 
 const NavBar = () => {
+    const { user, logOut } = useContext(AuthContext);
+    console.log(`User : ${user}`);
+    const handleSignOut = () => {
+        logOut().then().catch();
+    };
     const navLinks = (
         <>
             <li>
@@ -56,14 +63,28 @@ const NavBar = () => {
                 <ul className="menu menu-horizontal px-1">{navLinks}</ul>
             </div>
             <div className="navbar-end">
-                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                    <div className="w-10 rounded-full">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png" />
-                    </div>
-                </label>
-                <Link>
-                    <button className="btn">Login</button>
-                </Link>
+                {user ? (
+                    <>
+                        <label
+                            tabIndex={0}
+                            className="btn btn-ghost btn-circle avatar"
+                        >
+                            <div className="w-10 rounded-full">
+                                <img src={user.photoURL} />
+                            </div>
+                        </label>
+                        <span className="text-xl font-semibold mr-5">
+                            {user.displayName}
+                        </span>
+                        <button onClick={handleSignOut} className="btn">
+                            Sign Out
+                        </button>
+                    </>
+                ) : (
+                    <Link to="/login">
+                        <button className="btn">Login</button>
+                    </Link>
+                )}
             </div>
         </div>
     );
