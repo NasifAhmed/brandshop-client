@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Toyota",
+        "img_url": "https://i.ibb.co/vsQ1gNS/toyota.png"
+    },
+    {
+        "name": "Nissan",
+        "img_url": "https://i.ibb.co/DrscVXQ/nissan.png"
+    },
+    {
+        "name": "Chevrolet",
+        "img_url": "https://i.ibb.co/mvNmp9m/chevrolet.png"
+    },
+    {
+        "name": "Honda",
+        "img_url": "https://i.ibb.co/FsxXz1H/honda.png"
+    },
+    {
+        "name": "Jeep",
+        "img_url": "https://i.ibb.co/Fhs0p98/jeep.png"
+    },
+    {
+        "name": "Ford",
+        "img_url": "https://i.ibb.co/cTQNyYy/ford.png"
+    }
+]
