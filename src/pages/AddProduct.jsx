@@ -7,6 +7,7 @@ const AddProduct = () => {
         console.log(e.currentTarget);
         const form = new FormData(e.currentTarget);
         const img_url = form.get("img_url");
+        const name = form.get("name");
         const brand_name = form.get("brand_name");
         const type = form.get("type");
         const price = form.get("price");
@@ -15,6 +16,7 @@ const AddProduct = () => {
         console.log("THE PRODUCT-------------");
         const newCar = {
             img_url,
+            name,
             brand_name,
             type,
             price,
@@ -28,7 +30,7 @@ const AddProduct = () => {
     return (
         <div>
             <div>
-                <h2 className="text-3xl my-10 text-center">Please Login</h2>
+                <h2 className="text-3xl my-10 text-center">Add A Car</h2>
                 <form
                     onSubmit={handleSubmit}
                     className=" md:w-3/4 lg:w-1/2 mx-auto"
@@ -133,12 +135,6 @@ const AddProduct = () => {
                         <button className="btn btn-primary">ADD</button>
                     </div>
                 </form>
-                <p className="text-center mt-4">
-                    Do not have an account{" "}
-                    <Link className="text-blue-600 font-bold" to="/register">
-                        Register
-                    </Link>
-                </p>
             </div>
         </div>
     );
