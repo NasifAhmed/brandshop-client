@@ -3,7 +3,8 @@ const Footer = () => {
         <footer className="footer footer-center p-4 bg-base-300 text-base-content mt-24">
             <aside>
                 <p>
-                    Copyright © 2023 - All right reserved by ACME Industries Ltd
+                    Made by Nasif Ahmed <br />
+                    Contact : nasif2ahmed@gmail.com
                 </p>
             </aside>
         </footer>
