@@ -1,11 +1,12 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 
 const Login = () => {
     const { signIn, googleSignIn } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
+    const [error, setError] = useState();
     console.log("location i n the login page", location);
 
     const handleLogin = (e) => {
@@ -15,12 +16,15 @@ const Login = () => {
         const email = form.get("email");
         const password = form.get("password");
         console.log(email, password);
+        // reset error
+        setError("");
         signIn(email, password)
             .then((result) => {
                 console.log(result.user);
                 navigate(location?.state ? location.state : "/");
             })
             .catch((error) => {
+                setError(error.message);
                 console.error(error);
             });
     };
@@ -31,6 +35,7 @@ const Login = () => {
                 navigate(location?.state ? location.state : "/");
             })
             .catch((error) => {
+                setError(error.message);
                 console.error(error);
             });
     };
@@ -67,6 +72,7 @@ const Login = () => {
                             className="input input-bordered"
                         />
                     </div>
+                    {error && <p className="text-red-700">{error}</p>}
                     <div className="form-control mt-6">
                         <button className="btn btn-primary">Login</button>
                     </div>
