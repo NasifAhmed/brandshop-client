@@ -6,7 +6,7 @@ const MyCart = () => {
     const { user } = useContext(AuthContext);
 
     const [myCart, setMyCart] = useState([]);
-    const [deleteCount, setDeleteCount] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch(
@@ -22,6 +22,7 @@ const MyCart = () => {
             .then((data) => {
                 // Process the retrieved data as needed
                 console.log(data);
+                setLoading(false);
                 setMyCart(data);
             })
             .catch((error) => {
@@ -70,6 +71,18 @@ const MyCart = () => {
 
     return (
         <div>
+            {loading && (
+                <div className="my-52 flex justify-center">
+                    <span className="loading loading-infinity loading-lg"></span>
+                </div>
+            )}
+            {!loading && myCart.length === 0 && (
+                <div>
+                    <h1 className="text-4xl my-52 text-center">
+                        No Product Added To Cart
+                    </h1>
+                </div>
+            )}
             <div className="grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-10">
                 {myCart.map((brand) => (
                     <div className="card card-compact w-96 bg-base-100 shadow-xl w-full">

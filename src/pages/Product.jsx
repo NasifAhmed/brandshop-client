@@ -6,10 +6,12 @@ import { Link } from "react-router-dom";
 const Product = () => {
     const { brand } = useParams();
     const [brandData, setBrandData] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch(
             `https://b8a10-brandshop-server-side-nasif-ahmed.vercel.app/getBrand/${brand}`,
+            // `http://localhost:5000/getBrand/${brand}`,
             {
                 method: "GET",
                 headers: {
@@ -21,6 +23,7 @@ const Product = () => {
             .then((data) => {
                 // Process the retrieved data as needed
                 console.log(data);
+                setLoading(false);
                 setBrandData(data);
             })
             .catch((error) => {
@@ -31,6 +34,18 @@ const Product = () => {
     return (
         <div>
             <Slider></Slider>
+            {loading && (
+                <div className="my-52 flex justify-center">
+                    <span className="loading loading-infinity loading-lg"></span>
+                </div>
+            )}
+            {!loading && brandData.length === 0 && (
+                <div>
+                    <h1 className="text-4xl my-52 text-center">
+                        No Product Available
+                    </h1>
+                </div>
+            )}
             <div className="grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-10">
                 {brandData.map((brand) => (
                     <div className="card card-compact w-96 bg-base-100 shadow-xl w-full">

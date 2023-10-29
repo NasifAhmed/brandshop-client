@@ -9,6 +9,7 @@ const ProductDetails = () => {
     const { product } = useParams();
 
     const [productData, setProductData] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch(
@@ -24,6 +25,7 @@ const ProductDetails = () => {
             .then((data) => {
                 // Process the retrieved data as needed
                 console.log(data);
+                setLoading(false);
                 setProductData(data[0]);
             })
             .catch((error) => {
@@ -38,26 +40,39 @@ const ProductDetails = () => {
     };
 
     return (
-        <div className="card card-compact w-full bg-base-100 shadow-xl">
-            <figure>
-                <img src={productData.img_url} className="max-h-96" />
-            </figure>
-            <div className="card-body">
-                <p className="text-center font-bold text-2xl">
-                    {productData.desc}
-                </p>
-                <h2 className="card-title">Name : {productData.name}</h2>
-                <h2 className="card-title">Brand: {productData.brand_name}</h2>
-                <h2 className="card-title">Type: {productData.type}</h2>
-                <h2 className="card-title">Price: ${productData.price}</h2>
-                <h2 className="card-title">Rating: {productData.rating}</h2>
-                <div className="card-actions justify-center">
-                    <button className="btn btn-primary" onClick={handleClick}>
-                        Add to cart
-                    </button>
+        <>
+            {loading && (
+                <div className="my-52 flex justify-center">
+                    <span className="loading loading-infinity loading-lg"></span>
+                </div>
+            )}
+
+            <div className="card card-compact w-full bg-base-100 shadow-xl">
+                <figure>
+                    <img src={productData.img_url} className="max-h-96" />
+                </figure>
+                <div className="card-body">
+                    <p className="text-center font-bold text-2xl">
+                        {productData.desc}
+                    </p>
+                    <h2 className="card-title">Name : {productData.name}</h2>
+                    <h2 className="card-title">
+                        Brand: {productData.brand_name}
+                    </h2>
+                    <h2 className="card-title">Type: {productData.type}</h2>
+                    <h2 className="card-title">Price: ${productData.price}</h2>
+                    <h2 className="card-title">Rating: {productData.rating}</h2>
+                    <div className="card-actions justify-center">
+                        <button
+                            className="btn btn-primary"
+                            onClick={handleClick}
+                        >
+                            Add to cart
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 
