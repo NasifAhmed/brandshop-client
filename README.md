@@ -1,8 +1,19 @@
-# React + Vite
+# Car Mania Brand Shop Website Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Live Site : [Here](https://assignment10-7d9a2.web.app/)
 
-Currently, two official plugins are available:
+## Used tech
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- JavaScript
+- React
+- Tailwind
+- UI Library : Daisy UI
+- Authintication : Firebase
+
+## Description
+
+-   This website is shop for different brands of card.
+-   There are active advertisements for offers.
+-   Users can visit pages of different brands and see all the available cars of that brand.
+-   Visitors can visit an see different brand cars.
+-   Visitors can add their choice of cars to cart and then buy.
