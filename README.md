@@ -11,6 +11,7 @@
 - Authintication : Firebase
 
 ## Description
+This is the client side for the Car Mania website
 
 -   This website is shop for different brands of card.
 -   There are active advertisements for offers.
